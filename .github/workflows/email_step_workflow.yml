@@ -1,0 +1,27 @@
+name: Email Step Workflow
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 22f1001977@ds.study.iitm.ac.in - Custom Step
+        run: |
+          echo "This step contains my IITM email address"
+          echo "Current directory: $(pwd)"
+          echo "GitHub Runner OS: $(uname -a)"
+          echo "Current time: $(date)"
+          echo "Python version: $(python --version || echo 'Python not installed')"
+          
+      - name: Post-step verification
+        run: echo "Workflow completed successfully at $(date)"
